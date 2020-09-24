@@ -142,13 +142,13 @@ printf "==========================================================\n\n"
 echo "Checando se será necessario modificar o smb.conf (Config Samba)"
 if (($OPTPART == 0)); then
 	cd $PASTALOCAL/util
-	wget http://vxisto.com/smb_nopart.conf
+	wget https://github.com/VXisto/CentOSPG11_Deploy/blob/master/smb_nopart.conf
 	mv smb_nopart.conf smb.conf	
 	mv /etc/samba/smb.conf /etc/samba/smb.conf.bk
 	cp $PASTALOCAL/util/smb.conf /etc/samba/
 else
 	cd $PASTALOCAL/util
-	wget http://vxisto.com/smb_partcustom.conf
+	wget https://github.com/VXisto/CentOSPG11_Deploy/blob/master/smb_partcustom.conf
 	mv smb_partcustom.conf smb.conf	
 	sed -i '42i\        path = '$PASTALOCAL'' smb.conf 
 	mv /etc/samba/smb.conf /etc/samba/smb.conf.bk
@@ -210,16 +210,16 @@ echo "Baixando e configurando backup"
 printf "==========================================================\n\n"
 if (($OPTPART == 0)); then
 	cd $PASTALOCAL/util
-	wget http://vxisto.com/backupbd.zip
+	wget https://github.com/VXisto/CentOSPG11_Deploy/blob/master/backupbd.zip
 	unzip backupbd.zip
 	sed -i '8i\PATH_BK="/shared/backup"' bk_bd
 	sed -i '44i\find /shared/backup -type f -mtime +3 -delete' bk_bd
-	cp bk_vr-yum /usr/local/bin/
+	cp bk_bd /usr/local/bin/
 	chmod +x /usr/local/bin/bk_vr-yum
 	
 else
 	cd $PASTALOCAL/util
-	wget http://vxisto.com/backupbd.zip
+	wget https://github.com/VXisto/CentOSPG11_Deploy/blob/master/backupbd.zip
 	unzip backupbd.zip
 	sed -i '8i\PATH_BK="'$PASTALOCAL'/backup"' bk_bd
 	sed -i '42i\find '$PASTALOCAL'/backup -type f -mtime +3 -delete' bk_bd	
@@ -254,6 +254,6 @@ echo "Você deseja usar o crontab padrao (22h para backup)"
 #touch /root/localdata
 #echo "DATALOCAL='$DATALOCAL'" >> /root/localdata
 cd /root/
-wget vxisto.com/GerenciadorPostgres.sh
+wget https://github.com/VXisto/CentOSPG11_Deploy/blob/master/GerenciadorPostgres.sh
 chmod +x GerenciadorPostgres.sh
 echo "Instalacao finalizada, execute agora o GerenciadorPostgres"
