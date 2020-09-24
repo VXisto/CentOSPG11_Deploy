@@ -16,18 +16,18 @@ echo "Você está configurando este servidor em um local com proxy?"
 			if (($OPTPROXY == 0)); then	
 			        break
 			else 
-		         echo "Digite seu Login de proxy:"
-                 read LOGINPX
-                 echo "Digite sua senha de proxy"
-                 read SENHAPX
-				 echo "Digite o IP do Proxy"
-				 echo "Ex: 10.0.0.1"
-				 read IPPROXY
-				 echo "Digite a porta do proxy"
-				 read PORTPROXY
-                 export https_proxy=http://$LOGINPX:$SENHAPX@$IPPROXY:$PORTPROXY
-                 export http_proxy=http://$LOGINPX:$SENHAPX@$IPPROXY:$PORTPROXY
-                 echo "Proxy configurado para Yum/DNF"
+				echo "Digite seu Login de proxy:"
+				read LOGINPX
+				echo "Digite sua senha de proxy"
+				read SENHAPX
+				echo "Digite o IP do Proxy"
+				echo "Ex: 10.0.0.1"
+				read IPPROXY
+				echo "Digite a porta do proxy"
+				read PORTPROXY
+				export https_proxy=http://$LOGINPX:$SENHAPX@$IPPROXY:$PORTPROXY
+				export http_proxy=http://$LOGINPX:$SENHAPX@$IPPROXY:$PORTPROXY
+				echo "Proxy configurado para Yum/DNF"
 			fi
 			break
 		fi
